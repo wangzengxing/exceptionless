@@ -28,12 +28,11 @@ namespace Exceptionless.Demo
 
             app.UseRouting();
 
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsEnvironment("Test"))
             {
                 ExceptionlessClient.Default.Configuration.ApiKey = "uN0HOjzTgslu1ojrJWDREjk7CTN6PYWfei2Xi41C";
                 ExceptionlessClient.Default.Configuration.ServerUrl = "http://wangzengxing.utools.club";
                 loggerFactory.AddProvider(new ExceptionlessLoggerProvider());
-
             }
 
             app.UseEndpoints(endpoints =>
